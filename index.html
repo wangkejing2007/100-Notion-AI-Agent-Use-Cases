@@ -1,0 +1,718 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>100 Notion AI Agent Use Cases</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2c602ebf-3217-81ca-b71e-f6686a7e0382" class="page sans"><header><img class="page-cover-image" src="100-Notion-AI-Use-Cases-Hero.png" style="object-position:center 55.26%"/><h1 class="page-title" dir="auto">100 Notion AI Agent Use Cases</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="callout" style="white-space:pre-wrap;display:flex" id="2c602ebf-3217-8124-a324-e394f8831ea9"><div style="width:100%"><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8124-8fe9-f4b3e65e711c" class="">This page shows <strong>100 practical ways</strong> your <strong>Agent</strong> can do work for you—from research to building databases and content—right inside <strong>Notion</strong>.</p></div></div></figure></div><div style="display:contents" dir="auto"><ul id="2c602ebf-3217-8115-8e9d-ddd348d1ea2b" class="toggle"><li><details open=""><summary><strong>Quick Navigation</strong></summary><div style="display:contents" dir="ltr"><nav id="2c602ebf-3217-81c3-80ef-db7cb4578451" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-814c-b41b-ffa04eb46fc7">Getting Started: What You Should Know About Agents</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8189-9a82-e7ca88522aae">Data &amp; Analytics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-813d-8f4b-eb59c72cda94">1. Survey Response Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ae-a128-cb93b0702aa7">2. Sales Pipeline Review</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81db-9ea5-f5149705f0aa">3. Meeting Analytics Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81f0-aaa3-f30787d685c9">4. Competitor Analysis Report</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8166-82d9-fdca504ae65d">5. Budget Variance Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81ee-a176-c2fead4ae847">Content Creation &amp; Writing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81c4-b240-d15accec58a0">6. Email Campaign Variants</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ff-9287-fab611a22e47">7. Blog Post Outlines</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8166-ab91-db322210e20b">8. Customer Story Enhancement</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-819f-92cd-d84757d0ad5b">9. Documentation Standardization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-814e-b240-e1d605665e6d">10. Social Media Calendar</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81d2-bef9-c3fbd21ad4d0">Project &amp; Task Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-815d-b148-c9b899865571">11. Sprint Planning Assistant</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8133-9443-e6c5e197db5d">12. Project Status Updates</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8128-92a5-e5e55ee676af">13. Risk Assessment Matrix</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81f5-bafc-c49adfd94a02">14. Milestone Timeline</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81f4-9345-eccc835b2686">15. Task Delegation Plan</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8105-adba-c64de179133e">Strategic Planning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8167-ada0-f7a5126964b0">16. OKR Draft Generation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-819e-86c8-d37b4140d2d6">17. SWOT Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-815a-abfb-c0e876772ab4">18. Roadmap Prioritization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81c8-90b3-c9ca79379c37">19. Market Entry Strategy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-815c-a6f7-ed3af114081e">20. Partnership Evaluation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8178-86c7-c34f7476a167">Research &amp; Discovery</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81d8-b9a3-eabf3afb1d50">21. Industry Trend Report</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8132-87c5-cb41f1938b56">22. Technical Documentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ec-a994-c096643d8d1b">23. Best Practices Guide</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8149-ac42-e0d2ee28313d">24. Vendor Comparison</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81df-a9d6-c2f71e1cc1f3">25. Regulatory Compliance Check</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81f9-942c-ee7e67868728">Team &amp; HR Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-813b-a41e-f405cb100030">26. Onboarding Checklist</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81e7-9f0c-e2671f75d0ff">27. Performance Review Prep</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-816e-a5f1-f560d3c95986">28. Team Skills Matrix</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81cb-8fd8-c66f6e88b624">29. Meeting Agenda Generator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-810b-9aec-c29fdfebeaad">30. Resource Planning Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81ae-b375-c118be20317c">Sales &amp; Customer Success</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81b0-a4ee-c265e0a53240">31. Proposal Customization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81c0-8881-ce3352e919d5">32. Account Health Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8169-95aa-c440439b196b">33. QBR Presentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81b7-b619-e8d7be451c42">34. Competitive Battle Cards</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8120-9fff-dc6932738666">35. Renewal Risk Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81e8-b45c-dfa9e63c13fa">Knowledge Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-814a-a370-f7b461e9460f">36. Wiki Reorganization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-810c-ada8-d8fd8b98bd5f">37. FAQ Generator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-819c-b791-f8d99be658ff">38. Process Documentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81df-958f-f7f1b0c28b98">39. Training Material Creation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8178-bbaa-ca723d77854e">40. Glossary Builder</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8115-90ca-c6ce35c2a7dc">Marketing &amp; Growth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81d6-a270-d2133d03342b">41. Campaign Performance Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81bb-a9da-e782e7da7e0d">42. Content Calendar Planning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-817f-8fd2-db6dbab14f10">43. SEO Content Optimization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81a8-943c-d450244b9a67">44. Lead Scoring Model</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81f8-a835-e7c6468120e7">45. Market Research Summary</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81cb-b5f1-c15478aa8a1d">Product Development</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8132-9673-dc940703b3ec">46. Feature Specification</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-819f-a57c-f10d4c16b18e">47. Bug Tracker</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8150-85bc-d4c8cac1041a">48. User Feedback Synthesis ⭐</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81fb-81cc-e63678900ea8">49. Release Notes Generator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ca-b44a-cf3051d51d0e">50. API Documentation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-813c-9517-e97087ded13f">Financial Planning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8165-91d6-f8ed939b6509">51. Budget Allocation Plan</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8122-9afe-e92338cd7d09">52. Expense Report Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81f4-ad75-d0fb23e0688a">53. Financial Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8170-a08f-f58d9cd2c68c">54. Invoice Tracking System</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-810b-bc69-ebbf9edaa6f9">55. Cost-Benefit Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-814d-b48b-f7dd146495c2">Learning &amp; Development</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8184-a171-c6f4f8b80526">56. Learning Path Creator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ec-a7cc-c7b8de96465f">57. Skill Gap Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8188-a4bc-c7862cf120f3">58. Course Content Outline</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8196-a8c6-f177b1772e20">59. Knowledge Check Generator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8131-bbea-c922c030ee23">60. Mentorship Program Design</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8103-8809-dc9b10eda966">Operations &amp; Efficiency</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81a0-bbdb-d6c7c6266043">61. Process Optimization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81bc-9d52-e5b74680ca1e">62. SOP Documentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81da-851e-d20ba7b00b6f">63. Automation Opportunities</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-819b-b519-e770e18e144c">64. Vendor Management Database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-818f-9cb8-e29085b9d80e">65. Incident Response Playbook</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81e5-acc1-f02722f723ac">Personal Productivity</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81b9-997b-f38decb4cf3b">66. Daily Planning Assistant</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-812b-ae88-c338df22e70b">67. Meeting Notes Summarizer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-816a-9071-d583f14a75c7">68. Email Draft Generator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81e1-a52a-c0294ee1bc87">69. Weekly Review Template</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8123-8949-ea64413de034">70. Goal Tracking System</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-81ea-80a4-c7cc3e35bf3a">Healthcare &amp; Wellness</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81e7-ad1e-f62deb1a0a9f">71. Wellness Program Design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8177-b24e-d6e19ce5cf5e">72. Health Resource Library</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81d5-afc8-c1d893d10b05">73. Symptom Tracker</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-813f-ab82-db04677601eb">74. Mental Health Resources</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81b4-98ef-c8d9230d9951">75. Ergonomics Checklist</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8156-9266-db6f2bbc1229">Venture Capital</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-811a-9059-e12abad6d8e8">76. Deal Sourcing Radar</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-812d-9db7-d23a8313e29e">77. Investment Memo Draft</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ee-b155-de5546879917">78. Diligence Checklist Builder</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8146-906c-d1e9fc31c64b">79. Portfolio Health Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-812e-bdd4-ee9839d03dc9">80. LP Update Generator</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c602ebf-3217-8115-9b6f-d5ffb0963fb3">Innovation &amp; Ideation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ff-8b88-fd89ab781429">81. Brainstorming Facilitator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8125-970f-c4f46e91b7b6">82. Innovation Pipeline</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81ca-a7bf-daed85a92c8a">83. Trend Analysis Report</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81a1-ba82-f7034a7a7fef">84. Hackathon Project Organizer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8108-bd86-e87890c29225">85. Patent Research Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8170-bead-eb9ac32c68bf">Customer Experience</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-811b-92d0-de0645fac6b3">86. Customer Journey Mapping</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81be-88d4-dad14b479838">87. Support Ticket Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8190-9cbb-d60fbe046bb1">88. NPS Response Action Plan</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81e9-89a4-f2519e9d928e">89. Customer Success Playbook</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8192-8fb2-dfd57329751c">90. Feedback Loop System</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81c1-8f10-ca19aaa3e08a">Event Planning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-814a-8bb8-f0eba6ca06ad">91. Event Planning Timeline</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81be-8484-c8baee7bf916">92. Vendor Comparison Matrix</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8140-ac04-e22e59eaa7c5">93. Guest List Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8113-a9a6-e44a919e9cfd">94. Event Budget Tracker</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-817c-b7dc-e6fb17396fe8">95. Post-Event Report</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81bd-8325-eb0e21327314">Security &amp; Compliance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81e0-9013-fab4fc9b6257">96. Security Audit Checklist</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8118-8c7e-d97af0f4d1f6">97. Access Control Matrix</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81a9-9e62-d04218a9f170">98. Compliance Calendar</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-8136-88d3-e17ac4bd5a97">99. Data Privacy Assessment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c602ebf-3217-81d6-a72d-d7f60e8ab146">100. Incident Log Database</a></div></nav></div></details></li></ul></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-814c-b41b-ffa04eb46fc7" class="block-color-purple_background">Getting Started: What You Should Know About Agents</h1></div><div style="display:contents" dir="auto"><ol type="1" id="2c602ebf-3217-814e-b9fe-c477c5319928" class="numbered-list" start="1"><li>Agents plan multi-step tasks, use connected tools, and create real outputs you can edit and share</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2c602ebf-3217-81d8-bb3a-c77cab81e0c9" class="numbered-list" start="2"><li>All use cases below have been vetted and work today; many require specific information and integrations in your Notion workspace (e.g., analyzing sales meetings requires storing meeting notes in Notion)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2c602ebf-3217-81cd-abc1-dbffaaa92c42" class="numbered-list" start="3"><li>When using these prompts, adjust them to your specific use case and point the Agent to needed information by tagging, selecting, or uploading sources</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2c602ebf-3217-8102-8bf2-ede51613b597" class="numbered-list" start="4"><li>Best results come when your source information lives in Notion or connected apps (Slack, Google Drive, Jira, Gmail). <a href="https://www.notion.com/help/notion-ai-connectors">Learn more about AI connectors here</a>.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2c602ebf-3217-81bc-b69b-e395e2ef9793" class="numbered-list" start="5"><li>Personalize tone and workflows in your Agent by using Agent Profiles</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2c602ebf-3217-8131-b03a-fe1b32b8a8e7" class="numbered-list" start="6"><li>Always review Agent outputs; you can ask for edits and follow-ups — undo and version history keep your edits sa</li></ol></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8189-9a82-e7ca88522aae" class="block-color-purple_background">Data &amp; Analytics</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-818e-813d-f7b881309040" class=""><em>Transform raw data into actionable insights</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-813d-8f4b-eb59c72cda94" class="">1. Survey Response Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-814b-806b-d257689e3159" class=""><strong>✏️ Prompt:</strong> &quot;Analyze customer feedback responses from CSV. Produce themes, sentiment, and specific recommendations with citations back to each source note.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-810d-8348-c361361d90c5" class=""><strong>🪄Agent Steps:</strong> <em>Analyzes unstructured text, clusters themes, drafts report with citations. Uses internal search and page creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ae-a128-cb93b0702aa7" class="">2. Sales Pipeline Review</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a8-8bbe-f52cc074bbfd" class=""><strong>✏️ Prompt:</strong> &quot;Review our Q4 deals database, plus notes from the #deals Slack channel. Summarize at‑risk opps, blockers, and next steps per account.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8151-8b69-fe2e07e5ffdb" class=""><strong>🪄Agent Steps:</strong> <em>Queries deals DB, flags risk criteria, proposes next actions. Uses database query and drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81db-9ea5-f5149705f0aa" class="">3. Meeting Analytics Dashboard</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f7-8203-cec6e9570b8a" class=""><strong>✏️ Prompt:</strong> &quot;Scan last month of team meeting notes, Slack huddles summaries, and Google Calendar events to create a dashboard of recurring topics, action‑item completion, and key decisions.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-815a-a6dc-f4d69010d188" class=""><strong>🪄Agent Steps:</strong> <em>Searches notes, extracts patterns, builds dashboard. Uses internal search and database creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81f0-aaa3-f30787d685c9" class="">4. Competitor Analysis Report</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f1-87b8-df6ebbd3118c" class=""><strong>✏️ Prompt:</strong> &quot;Research top 5 competitors’ recent updates and pricing. Create a comparison table and recommendations.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811a-954b-df3e7843dfc6" class=""><strong>🪄Agent Steps:</strong> <em>Performs web research, structures comparison, drafts insights. Uses web search and table creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8166-82d9-fdca504ae65d" class="">5. Budget Variance Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-815a-951f-eae9d88bc03f" class=""><strong>✏️ Prompt:</strong> &quot;Compare actuals vs. budget and highlight variances over 10% with explanations.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c9-82f1-ca1990382696" class=""><strong>🪄Agent Steps:</strong> <em>Queries finance DB, computes variances, drafts summary with links. Uses database query and analysis.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81ee-a176-c2fead4ae847" class="block-color-purple_background">Content Creation &amp; Writing</h1></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81c4-b240-d15accec58a0" class="">6. Email Campaign Variants</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b1-b1f6-f6b12117688e" class=""><strong>✏️ Prompt:</strong> &quot;Based on our PRD and alpha feedback, draft 3 launch email versions for enterprise, SMB, and trial users. Include quotes and apply learnings from recent releases.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-813a-ad90-f901f5b4482a" class=""><strong>🪄Agent Steps:</strong> <em>Pulls context from PRD and feedback pages, drafts segmented emails with subject ideas. Uses internal search and page drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ff-9287-fab611a22e47" class="">7. Blog Post Outlines</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81bc-a88e-ed0ef85ddbb5" class=""><strong>✏️ Prompt:</strong> &quot;From recent meeting notes and the Remote Work research page, create a detailed blog outline with 5 external sources.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ef-968d-fb855ed88ea7" class=""><strong>🪄Agent Steps:</strong> <em>Synthesizes internal notes, finds supporting links, outputs outline plus asset checklist. Uses search and web research.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8166-ab91-db322210e20b" class="">8. Customer Story Enhancement</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b7-b04a-d1be39cdad63" class=""><strong>✏️ Prompt:</strong> &quot;Rewrite a customer story for flow. Insert verified product metrics and flag claims needing approval.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8112-86d1-de840b422870" class=""><strong>🪄Agent Steps:</strong> <em>Checks style guide, pulls metrics, edits draft and flags issues. Uses internal search and editing.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-819f-92cd-d84757d0ad5b" class="">9. Documentation Standardization</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8177-a79b-f08e956cf186" class=""><strong>✏️ Prompt:</strong> &quot;Normalize API docs tagged v2 to our template and produce a change log by endpoint.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ae-b1af-e01a523a5312" class=""><strong>🪄Agent Steps:</strong> <em>Scans docs, refactors structure, compiles change log. Uses multi-page editing and summary creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-814e-b240-e1d605665e6d" class="">10. Social Media Calendar</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8193-bd90-c3e4b6056c61" class=""><strong>✏️ Prompt:</strong> &quot;Create a 4-week LinkedIn calendar from blogs, release notes, and webinars. Link sources and avoid launch conflicts.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a4-81d9-f62250fd6b2e" class=""><strong>🪄Agent Steps:</strong> <em>Harvests content, drafts variations, proposes schedule. Uses internal search and planning.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81d2-bef9-c3fbd21ad4d0" class="block-color-purple_background">Project &amp; Task Management</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8116-ae39-c303ed2bdad6" class=""><em>Organize work and track progress efficiently</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-815d-b148-c9b899865571" class="">11. Sprint Planning Assistant</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a7-84eb-cecaa60b138d" class=""><strong>✏️ Prompt:</strong> &quot;Review our backlog in Jira and create a 2-week sprint plan based on dependencies and team capacity.&quot;</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8171-b56e-e0c94a567440" class=""><strong>🪄Agent Steps:</strong> <em>Queries backlog, checks capacity, prioritizes and assigns. Uses database query and view updates.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8133-9443-e6c5e197db5d" class="">12. Project Status Updates</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8158-bb9b-dabbf4673839" class=""><strong>✏️ Prompt:</strong> &quot;Generate a weekly status by pulling progress from the tasks database and team channels (Slack, Microsoft Teams, Email). Highlight blockers and wins.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81cf-8154-fd7747c54654" class=""><strong>🪄Agent Steps:</strong> <em>Aggregates updates, detects blockers, drafts summary with links. Uses database query and page drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8128-92a5-e5e55ee676af" class="">13. Risk Assessment Matrix</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8172-9a18-fa10d0701076" class=""><strong>✏️ Prompt:</strong> &quot;Create a risk database for our launch with probability, impact, and mitigations. Format similar to our last post-mortem.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8181-b73b-ecb5f0041093" class=""><strong>🪄Agent Steps:</strong> <em>Builds schema, seeds examples, groups by risk level. Uses database creation and configuration.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81f5-bafc-c49adfd94a02" class="">14. Milestone Timeline</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e7-8849-c91172243776" class=""><strong>✏️ Prompt:</strong> &quot;Turn the requirements doc into a milestone timeline with dependencies and owners.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8105-bcdb-e15a2d829350" class=""><strong>🪄Agent Steps:</strong> <em>Parses doc, creates timeline view, assigns owners. Uses page analysis and timeline creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81f4-9345-eccc835b2686" class="">15. Task Delegation Plan</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8163-8a20-e45afe5e577f" class=""><strong>✏️ Prompt:</strong> &quot;Propose task assignments using the skills matrix and current workload. Check team calendar for OOO and PTO in the next 30 days..”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8170-98f2-dcb1ed4a6fd9" class=""><strong>🪄Agent Steps:</strong> <em>Joins skills and workload, suggests owners, flags overloads. Uses database query and recommendations.</em></p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8120-b485-fbfae41938ca" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8105-adba-c64de179133e" class="block-color-purple_background">Strategic Planning</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8176-af20-cb08e2758ecc" class=""><em>Transform ideas into actionable strategies</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8167-ada0-f7a5126964b0" class="">16. OKR Draft Generation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-814e-a15b-c17a54456bec" class=""><strong>✏️ Prompt:</strong> &quot;Using our Company Goals page, Jira epics, and last quarter’s business review, draft Q1 OKRs with measurable KRs and clear owners. Link each KR to its evidence source.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ff-99ff-c19d547c9356" class=""><strong>🪄Agent Steps:</strong> <em>Pulls goals and projects, proposes draft OKRs, links owners. Uses internal search and page drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-819e-86c8-d37b4140d2d6" class="">17. SWOT Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8110-8699-ea2f3a65b474" class=""><strong>✏️ Prompt:</strong> &quot;From market notes, competitor data, and internal docs, produce a SWOT for the new product line. Pull competitor moves from recent press and pricing pages, and cite sources.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-815a-9295-cde8776c45c8" class=""><strong>🪄Agent Steps:</strong> <em>Synthesizes sources, classifies insights, drafts SWOT with citations. Uses search and structured page creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-815a-abfb-c0e876772ab4" class="">18. Roadmap Prioritization</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-815f-9c32-f09e527c7445" class=""><strong>✏️ Prompt:</strong> &quot;Prioritize feature requests by impact and effort and output a proposed roadmap.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c6-a5eb-d1d94886ad7a" class=""><strong>🪄Agent Steps:</strong> <em>Queries requests DB, scores items, builds prioritized views. Uses database query and view updates.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81c8-90b3-c9ca79379c37" class="">19. Market Entry Strategy</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8170-a951-c1755bb37b29" class=""><strong>✏️ Prompt:</strong> &quot;Research the EU market and suggest an entry plan with timeline and key risks.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a3-aa9e-c21c7d0e41b3" class=""><strong>🪄Agent Steps:</strong> <em>Performs web research, drafts plan, links sources and assumptions. Uses web search and planning doc.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-815c-a6f7-ed3af114081e" class="">20. Partnership Evaluation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8132-82e0-db68693c9a3e" class=""><strong>✏️ Prompt:</strong> &quot;Create a scoring framework and score current partner candidates.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-819f-be49-f8f72dd0ef53" class=""><strong>🪄Agent Steps:</strong> <em>Builds criteria, applies scores, recommends next steps. Uses database creation and scoring.</em><br/></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8178-86c7-c34f7476a167" class="block-color-purple_background">Research &amp; Discovery</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8123-8e20-c940bb4603d5" class=""><em>Find and synthesize information quickly</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81d8-b9a3-eabf3afb1d50" class="">21. Industry Trend Report</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8188-b7db-dd7df9276ed1" class=""><strong>✏️ Prompt:</strong> &quot;Research AI-in-healthcare trends and summarize implications for our business.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a7-9129-f3675d15883c" class=""><strong>🪄Agent Steps:</strong> <em>Collects sources, extracts themes, drafts report with citations. Uses web research and report drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8132-87c5-cb41f1938b56" class="">22. Technical Documentation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-818f-8f72-c0ce460912eb" class=""><strong>✏️ Prompt:</strong> &quot;Find all auth system docs across Notion, Confluence, Google Drive, and GitHub READMEs, then compile a consolidated guide. De-duplicate and flag conflicts.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-817f-bb4a-d49425f67219" class=""><strong>🪄Agent Steps:</strong> <em>Searches pages, de-duplicates, produces a unified guide. Uses internal search and page creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ec-a994-c096643d8d1b" class="">23. Best Practices Guide</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-819f-8c17-f85d78dce47c" class=""><strong>✏️ Prompt:</strong> &quot;Research onboarding best practices and compare with our process.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81da-9b5d-ec6258c2a738" class=""><strong>🪄Agent Steps:</strong> <em>Reviews web sources and internal SOPs, drafts gaps and recs. Uses web research and comparison table.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8149-ac42-e0d2ee28313d" class="">24. Vendor Comparison</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d2-ad8f-fe710255b459" class=""><strong>✏️ Prompt:</strong> &quot;Compare CRM vendors that integrate with Notion and recommend top 3.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c0-bebd-e0861a1f6608" class=""><strong>🪄Agent Steps:</strong> <em>Builds feature matrix, scores vendors, drafts recommendation. Uses research and table creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81df-a9d6-c2f71e1cc1f3" class="">25. Regulatory Compliance Check</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-818f-8b2c-f2724bc05e01" class=""><strong>✏️ Prompt:</strong> &quot;Check our data handling against GDPR and list gaps.&quot;</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a0-9461-ee2708b25e85" class=""><strong>🪄Agent Steps:</strong> <em>Maps procedures to requirements, flags gaps, assigns owners. Uses document search and checklist creation.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81f9-942c-ee7e67868728" class="block-color-purple_background">Team &amp; HR Management</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8143-b4ec-d9e600099a2f" class=""><em>Streamline people operations and team collaboration</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-813b-a41e-f405cb100030" class="">26. Onboarding Checklist</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8128-8f2a-c84389f79931" class=""><strong>✏️ Prompt:</strong> &quot;Create an onboarding checklist for new engineers using our Notion engineering wiki, Google Drive onboarding folder, and #it-setup Slack FAQs. Include timeline and owners.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-816d-a490-fbcafcbf15a2" class=""><strong>🪄Agent Steps:</strong> <em>Searches docs, assembles steps, assigns owners. Uses internal search and checklist creation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81e7-9f0c-e2671f75d0ff" class="">27. Performance Review Prep</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8161-a543-d931c533a51e" class=""><strong>✏️ Prompt:</strong> “Gather last quarter’s outcomes and feedback from the Tasks DB, 1:1 notes, and peer feedback in the #kudos Slack channel. Draft review packets by person with highlights and growth areas.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-816a-bb47-e3edaa6f8fbb" class=""><strong>🪄Agent Steps:</strong> <em>Collects notes and task outcomes, organizes artifacts, drafts summaries. Uses search and page drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-816e-a5f1-f560d3c95986" class="">28. Team Skills Matrix</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8128-9539-e63a32a54a5e" class=""><strong>✏️ Prompt:</strong> &quot;Build a skills database by extracting skills from project pages, GitHub repos, and uploaded certifications. Highlight gaps by role.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8184-8e5e-d06c0593917f" class=""><strong>🪄Agent Steps:</strong> <em>Extracts skills, normalizes entries, flags gaps by role. Uses database creation and analysis.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81cb-8fd8-c66f6e88b624" class="">29. Meeting Agenda Generator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-814f-84d6-d2655fcfa57c" class=""><strong>✏️ Prompt:</strong> &quot;Create tomorrow’s standup agenda from open actions, the #engineering Slack channel, and tomorrow’s Google Calendar events. Include owners and timeboxes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a0-9676-dd1e94e372ae" class=""><strong>🪄Agent Steps:</strong> <em>Pulls action items, summarizes threads, outputs agenda with links. Uses internal search and synthesis.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-810b-9aec-c29fdfebeaad" class="">30. Resource Planning Dashboard</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8152-ad76-e3e38703790c" class=""><strong>✏️ Prompt:</strong> &quot;Analyze current allocations using the Projects DB, Jira epics in progress, and Google Calendar PTO. Create a next‑quarter resource view and flag over‑allocation risks.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-818a-bef4-d1dd865bf90e" class=""><strong>🪄Agent Steps:</strong> <em>Joins projects and capacity, proposes allocations, builds views. Uses database query and view updates.</em></p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8137-8c35-e6b5d3b878e2" class=""><strong>✏️ Prompt:</strong> &quot;Analyze our team&#x27;s current project allocations and create a resource planning view for the next quarter”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ef-91dc-e03be658730d" class=""><strong>🪄Agent Steps:</strong> <em>Visualizes team capacity and allocation. Uses database query and calendar views.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81ae-b375-c118be20317c" class="block-color-purple_background">Sales &amp; Customer Success</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d4-bfc8-d604d1cea8dc" class=""><em>Enhance customer relationships and drive revenue</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81b0-a4ee-c265e0a53240" class="">31. Proposal Customization</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8100-96f3-cb371eb6de8e" class=""><strong>✏️ Prompt:</strong> &quot;Customize our enterprise proposal for Acme using discovery notes, Slack threads, and the Acme CRM page.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-812b-ba34-f68ae9684b32" class=""><strong>🪄Agent Steps:</strong> <em>Pulls multi-source context, tailors sections, inserts metrics, flags assumptions. Uses internal search and editing.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81c0-8881-ce3352e919d5" class="">32. Account Health Dashboard</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d3-a620-c4be8eac2576" class=""><strong>✏️ Prompt:</strong> &quot;Create a health score DB by joining support (Zendesk), product usage (Amplitude), and renewal data (Salesforce/CRM). Surface the 5 lowest-scoring accounts.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a7-8e32-c27231edfc67" class=""><strong>🪄Agent Steps:</strong> <em>Normalizes fields, computes composite score, builds prioritized views. Uses aggregation and scoring.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8169-95aa-c440439b196b" class="">33. QBR Presentation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8129-a8b2-ca380a96912c" class=""><strong>✏️ Prompt:</strong> &quot;Draft a QBR for our top client using product analytics (Mixpanel/Amplitude), Salesforce account data, support themes, and delivered roadmap items. Include a 90‑day trend chart and next‑quarter goals.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8132-bd94-c90c975c6935" class=""><strong>🪄Agent Steps:</strong> <em>Collects metrics, builds charts, writes exec summary with links. Uses internal search and drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81b7-b619-e8d7be451c42" class="">34. Competitive Battle Cards</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8106-a6d1-f2fe3f754550" class=""><strong>✏️ Prompt:</strong> &quot;Create battle cards vs. top 3 competitors with talk tracks and objection handling.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8176-ac54-fb7fbde7f31f" class=""><strong>🪄Agent Steps:</strong> <em>Synthesizes docs and web sources, structures comparisons, adds citations. Uses research and tables.</em><br/></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8120-9fff-dc6932738666" class="">35. Renewal Risk Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a0-9c4b-c2c398017546" class=""><strong>✏️ Prompt:</strong> &quot;Flag churn risks using 90‑day usage, open support severity, and stakeholder engagement notes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ed-be4d-c47f8c436a59" class=""><strong>🪄Agent Steps:</strong> <em>Scores risk, ranks accounts, recommends saves with source links. Uses database analysis and linking.<br/></em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81e8-b45c-dfa9e63c13fa" class="block-color-purple_background">Knowledge Management</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8141-a4a8-fd82d7ebd5d9" class=""><em>Organize and leverage institutional knowledge</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-814a-a370-f7b461e9460f" class="">36. Wiki Reorganization</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8179-950c-ded7a75e84ae" class=""><strong>✏️ Prompt:</strong> &quot;Audit our engineering wiki, identify outdated content, and propose a new IA. Produce a migration checklist and add redirects where titles change.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8122-b7b4-e63830869a2c" class=""><strong>🪄Agent Steps:</strong> <em>Restructures knowledge bases with a concrete migration plan. Uses content analysis and hierarchy creation.<br/></em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-810c-ada8-d8fd8b98bd5f" class="">37. FAQ Generator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8139-9e0f-c8552d003638" class=""><strong>✏️ Prompt:</strong> &quot;Analyze last month&#x27;s support tickets and meeting notes to generate an FAQ with the top 20 issues. For each, include the canonical answer, relevant links to runbooks, and a &#x27;last verified&#x27; date.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ab-bfe7-fb3e3f85b4f2" class=""><strong>🪄Agent Steps:</strong> <em>Turns support patterns into self-serve knowledge. Uses pattern analysis and consolidated answers.</em><br/></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-819c-b791-f8d99be658ff" class="">38. Process Documentation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81cc-94f0-fa47abf7923c" class=""><strong>✏️ Prompt:</strong> &quot;Document our deployment process by reconciling recent deployment notes, runbooks, and incident postmortems. Output a step-by-step SOP with preflight checks and rollback steps, and highlight areas needing owner confirmation.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-810f-9615-cee91c726404" class=""><strong>🪄Agent Steps:</strong> <em>Consolidates operational know-how with decision points. Uses search and SOP drafting.<br/></em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81df-958f-f7f1b0c28b98" class="">39. Training Material Creation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8156-a11c-d471e3f6d229" class=""><strong>✏️ Prompt:</strong> &quot;Convert our product documentation into a training curriculum with modules, outcomes, exercises, and knowledge checks. Map each module to its source docs and embed example scenarios pulled from customer stories.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8153-9d31-d4ee74e7b3b7" class=""><strong>🪄Agent Steps:</strong> <em>Builds traceable learning paths. Uses content restructuring and assessment design.</em><br/></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8178-bbaa-ca723d77854e" class="">40. Glossary Builder</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f6-9645-c4217eb3907b" class=""><strong>✏️ Prompt:</strong> &quot;Scan all technical documents and extract a glossary of terms with definitions, canonical links, and example usages. Mark duplicates and propose merges.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f7-87ae-c36a7287527e" class=""><strong>🪄Agent Steps:</strong> <em>Creates a shared language with provenance. Uses term extraction and normalization.<br/></em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8115-90ca-c6ce35c2a7dc" class="block-color-purple_background">Marketing &amp; Growth</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81af-8fcd-e9b8d9ae6d87" class=""><em>Amplify marketing impact and drive growth</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81d6-a270-d2133d03342b" class="">41. Campaign Performance Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-816c-8de9-e44e950454fc" class=""><strong>✏️ Prompt:</strong> &quot;Analyze Q3 email campaigns by joining send metrics summarized in Notion. Identify top-performing themes and subject lines by audience, then propose three experiments with success metrics and required assets.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81da-a09c-c92f54795bfe" class=""><strong>🪄Agent Steps:</strong> <em>Produces analysis plus next actions. Uses multi-source data joins and experiment planning.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81bb-a9da-e782e7da7e0d" class="">42. Content Calendar Planning</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c3-99e7-dbba00587f70" class=""><strong>✏️ Prompt:</strong> &quot;Create a content calendar for next month by cross-referencing our launch plan, industry events page, and top content topics. Suggest cadence, target personas, and internal sources to repurpose, with links for each scheduled post.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81bc-bb0d-d58939a7660c" class=""><strong>🪄Agent Steps:</strong> <em>Builds a plan tied to strategy and sources. Uses internal search and scheduling recommendations.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-817f-8fd2-db6dbab14f10" class="">43. SEO Content Optimization</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f9-904f-fc938b8785a2" class=""><strong>✏️ Prompt:</strong> &quot;Review our top 10 blog posts and recommend improvements to headings, internal links to key docs, and schema snippets. Surface missing FAQs based on search queries captured in our notes, and provide a prioritized checklist per post.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e2-a0ff-c2df9f609b0b" class=""><strong>🪄Agent Steps:</strong> <em>Elevates organic impact with concrete edits. Uses content analysis and linked recommendations.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81a8-943c-d450244b9a67" class="">44. Lead Scoring Model</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8119-b161-e8042bdfb8b0" class=""><strong>✏️ Prompt:</strong> &quot;Create a lead scoring model with fields for engagement, firmographics, and behavioral signals. Define scoring rules in a reference page, generate sample scored leads, and include views grouped by sales region.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-816a-8f20-f67d5870bf8f" class=""><strong>🪄Agent Steps:</strong> <em>Implements a transparent scoring system. Uses database creation, rules doc, and example data.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81f8-a835-e7c6468120e7" class="">45. Market Research Summary</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a5-ace5-d6c81591e5db" class=""><strong>✏️ Prompt:</strong> &quot;Synthesize our target demographic insights by combining interview notes, survey summaries, and web research. Output three buyer personas with pains, triggers, preferred channels, and example messaging.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811f-b6c7-c3a356143b4f" class=""><strong>🪄Agent Steps:</strong> <em>Creates actionable personas grounded in evidence. Uses synthesis and structured pages.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81cb-b5f1-c15478aa8a1d" class="block-color-purple_background">Product Development</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81fc-86df-dfc1c7935d37" class=""><em>Accelerate product innovation and improvement</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8132-9673-dc940703b3ec" class="">46. Feature Specification</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8150-848b-c9e91b2ebf5c" class=""><strong>✏️ Prompt:</strong> &quot;Transform weekly feature request meeting notes into a spec with user stories, acceptance criteria, open questions, and links to related bugs and feedback pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8180-a45c-c0ff70d75ba6" class=""><strong>🪄Agent Steps:</strong> <em>Turns raw notes into shippable specs. Uses structuring and cross-linking.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-819f-a57c-f10d4c16b18e" class="">47. Bug Tracker</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81fc-9a1b-f198f70ed573" class=""><strong>✏️ Prompt:</strong> &quot;Create a bug triage database with severity, impact, owner, and SLA fields pulling from Slack and Jira. Create views for &#x27;Untriaged&#x27;, &#x27;Breaching soon&#x27;, and &#x27;By component’. ”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-815a-8249-c2a74e114fe5" class=""><strong>🪄Agent Steps:</strong> <em>Operationalizes triage with clear flows. Uses database design and views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8150-85bc-d4c8cac1041a" class="">48. User Feedback Synthesis ⭐</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d7-a42e-d3e87f775574" class=""><strong>✏️ Prompt:</strong> &quot;Collect last quarter&#x27;s user feedback by theme, quantify mentions per theme, and map each to affected areas in the roadmap. Pull from Slack (name channels), Reddit, and user research reports. Draft draft a solution doc for each.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81bc-a2f8-de051c8a8a9b" class=""><strong>🪄Agent Steps:</strong> <em>Prioritizes improvements with evidence. Uses thematic analysis and linkage.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81fb-81cc-e63678900ea8" class="">49. Release Notes Generator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8167-8bee-e50f8049fc6f" class=""><strong>✏️ Prompt:</strong> &quot;Assemble release notes by pulling merged items from sprint boards and recent changelog pages. Reference our release notes style guide. Add the page to Releases DB.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81db-9cb8-e2d3f8ce16ed" class=""><strong>🪄Agent Steps:</strong> <em>Automates release comms with traceability. Uses task aggregation and asset references.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ca-b44a-cf3051d51d0e" class="">50. API Documentation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d0-8432-c43461499ba1" class=""><strong>✏️ Prompt:</strong> &quot;Draft API docs for new endpoints with request and response examples verified against our test collections. Cross-link to auth and error handling guides.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b5-abb6-cf99dd0cc74f" class=""><strong>🪄Agent Steps:</strong> <em>Ensures accuracy with source verification. Uses structured technical writing and cross-links.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-813c-9517-e97087ded13f" class="block-color-purple_background">Financial Planning</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8117-9ab0-d5fd26fcaae2" class=""><em>Manage finances with clarity and insight</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8165-91d6-f8ed939b6509" class="">51. Budget Allocation Plan</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-810a-92fb-e873e02dd744" class=""><strong>✏️ Prompt:</strong> &quot;Propose a Q1 budget allocation using last year&#x27;s actuals from Google Drive spreadsheets and Box exports, plus this year&#x27;s priorities from the Company Goals page. Create department views, call out tradeoffs, and attach the assumptions log.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ef-8c7f-e2556d7db5c8" class=""><strong>🪄Agent Steps:</strong> <em>Aligns resources to strategy with transparency. Uses financial analysis and scenario notes.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8122-9afe-e92338cd7d09" class="">52. Expense Report Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b2-9255-ffc08c3ee169" class=""><strong>✏️ Prompt:</strong> &quot;Analyze expense reports stored in Google Drive and Box to find patterns by category and traveler. Flag policy exceptions with links to the original receipts in Google Drive or Gmail, and recommend policy tweaks.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e7-a0d8-c0d4d41402ec" class=""><strong>🪄Agent Steps:</strong> <em>Finds savings with evidence. Uses data review and recommendations.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81f4-ad75-d0fb23e0688a" class="">53. Financial Dashboard</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b9-a83a-f9b4f78ac2f6" class=""><strong>✏️ Prompt:</strong> &quot;Build a dashboard summarizing revenue, expenses, burn, and runway with month-over-month deltas. Include a &#x27;notes&#x27; section that explains anomalies with links to source pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8125-9d6f-d6f983613350" class=""><strong>🪄Agent Steps:</strong> <em>Pairs metrics with narrative. Uses aggregation and annotation.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8170-a08f-f58d9cd2c68c" class="">54. Invoice Tracking System</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8109-8813-eca6b266f3dc" class=""><strong>✏️ Prompt:</strong> &quot;Create an invoice tracking database with status, amount, due date, and owner fields. Import open invoices from NetSuite/QuickBooks export (PDF). Add &#x27;Aging&#x27; views and a reference page describing the follow-up cadence.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b6-bca7-cf1035772316" class=""><strong>🪄Agent Steps:</strong> <em>Enables collections discipline. Uses database design and playbook.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-810b-bc69-ebbf9edaa6f9" class="">55. Cost-Benefit Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8149-b0df-cbacbd46e725" class=""><strong>✏️ Prompt:</strong> &quot;Evaluate a new software tool by modeling TCO and ROI. Document assumptions, provide best/likely/worst scenarios, and link to stakeholder interviews.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e2-9437-fb4a17ff3560" class=""><strong>🪄Agent Steps:</strong> <em>Supports decisions with structured analysis. Uses financial modeling and sourcing.<br/></em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-814d-b48b-f7dd146495c2" class="block-color-purple_background">Learning &amp; Development</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d5-83f3-e40ee2ebec10" class=""><em>Foster continuous learning and growth</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8184-a171-c6f4f8b80526" class="">56. Learning Path Creator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8186-aad1-e8b36a5482ae" class=""><strong>✏️ Prompt:</strong> &quot;Design a learning path for junior devs using our Notion stack docs, GitHub READMEs, and onboarding materials in Google Drive and Box. Link exercises to example repos.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8131-bc99-e7b3a3a1e794" class=""><strong>🪄Agent Steps:</strong> <em>Maps docs to modules, sequences by dependency, drafts practice tasks. Uses content curation and planning.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ec-a7cc-c7b8de96465f" class="">57. Skill Gap Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811c-aba0-f02184a01659" class=""><strong>✏️ Prompt:</strong> &quot;Compare skill self‑assessments with role expectations and project needs by joining HRIS role profiles, the Skills Matrix DB, and recent project retros. Output gaps and a training backlog.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c0-b344-f3041743b825" class=""><strong>🪄Agent Steps:</strong> <em>Joins assessments and role matrices, highlights gaps, proposes training backlog. Uses analysis and recommendations.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8188-a4bc-c7862cf120f3" class="">58. Course Content Outline</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8116-8f3c-f97d5972176c" class=""><strong>✏️ Prompt:</strong> &quot;Draft an outline for internal Notion training with modules and exercises using source docs in Notion, Google Drive, and attached PDF. Include links to example GitHub repos for hands-on practice.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81fa-aa7b-f3dee026b858" class=""><strong>🪄Agent Steps:</strong> <em>Structures modules, writes objectives and exercises, links canonical help. Uses curriculum design.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8196-a8c6-f177b1772e20" class="">59. Knowledge Check Generator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ba-bd77-f1ed56fc7b13" class=""><strong>✏️ Prompt:</strong> &quot;Generate quiz questions from our security training pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8136-aece-fd6ac9406408" class=""><strong>🪄Agent Steps:</strong> <em>Extracts key points, drafts tiered questions, builds answer key with citations. Uses parsing and drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8131-bbea-c922c030ee23" class="">60. Mentorship Program Design</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8115-b293-cde0e073b9ce" class=""><strong>✏️ Prompt:</strong> &quot;Design a mentorship framework with matching criteria and check‑ins.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ee-882e-fc3332cc7c20" class=""><strong>🪄Agent Steps:</strong> <em>Defines criteria, drafts templates for kickoff and reviews, adds tracking view. Uses template and DB design.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8103-8809-dc9b10eda966" class="block-color-purple_background">Operations &amp; Efficiency</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811d-ba80-ccc44aec08bf" class=""><em>Streamline operations and boost productivity</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81a0-bbdb-d6c7c6266043" class="">61. Process Optimization</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ed-a8c1-c8ae69c5b377" class=""><strong>✏️ Prompt:</strong> &quot;Analyze the support workflow using Slack threads in #support, Jira/Linear tickets, and MS Teams transcripts. Propose changes to reduce response time with before/after swimlanes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f2-862c-d8fb666ab12b" class=""><strong>🪄Agent Steps:</strong> <em>Maps lifecycle data, finds bottlenecks, drafts before/after plan. Uses process analysis and planning.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81bc-9d52-e5b74680ca1e" class="">62. SOP Documentation</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d0-b001-c7dfac2a0a5b" class=""><strong>✏️ Prompt:</strong> &quot;Create deployment SOPs by merging notes with best practices.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81cd-8d3d-cf6faa7418ff" class=""><strong>🪄Agent Steps:</strong> <em>Extracts steps, assigns owners, versions the doc. Uses search and drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81da-851e-d20ba7b00b6f" class="">63. Automation Opportunities</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8174-ac31-d5b49485a8f7" class=""><strong>✏️ Prompt:</strong> &quot;Identify the top 10 automation candidates from recurring processes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8142-b712-cb45f46b87fe" class=""><strong>🪄Agent Steps:</strong> <em>Scans pages, scores ROI, outputs prioritized backlog with links. Uses review and scoring.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-819b-b519-e770e18e144c" class="">64. Vendor Management Database</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8163-9e80-f44d7004207b" class=""><strong>✏️ Prompt:</strong> &quot;Create a vendor DB with contracts, renewals, performance, and risk flags.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811f-b97c-d1fd5cd4263c" class=""><strong>🪄Agent Steps:</strong> <em>Designs schema, builds key views, seeds examples. Uses DB design.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-818f-9cb8-e29085b9d80e" class="">65. Incident Response Playbook</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-812d-9edb-d9a501311cba" class=""><strong>✏️ Prompt:</strong> &quot;Assemble an incident playbook with comms templates and RACI.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-814b-a3b1-dc803bc9421d" class=""><strong>🪄Agent Steps:</strong> <em>Synthesizes postmortems and runbooks, drafts templates, links examples. Uses synthesis and templating.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81e5-acc1-f02722f723ac" class="block-color-purple_background">Personal Productivity</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8108-8296-e0836e789142" class="">Enhance individual effectiveness and organization</p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81b9-997b-f38decb4cf3b" class="">66. Daily Planning Assistant</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-818e-94b8-f4f0ac2e334f" class=""><strong>✏️ Prompt:</strong> &quot;Draft today’s plan from my tasks, Slack reminders, and emails labeled &#x27;Action&#x27; in Gmail. Pull key docs from Google Drive/OneDrive and time‑block critical work.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-812b-862b-f0084bc7ae43" class=""><strong>🪄Agent Steps:</strong> <em>Reviews events and tasks, identifies priorities and risks, proposes time blocks. Uses calendar and tasks views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-812b-ae88-c338df22e70b" class="">67. Meeting Notes Summarizer</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81aa-9c94-c352e80d148c" class=""><strong>✏️ Prompt:</strong> &quot;Summarize today’s meetings. Extract decisions and action items with owners and due dates.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c6-bcb2-feb84e2a3d58" class=""><strong>🪄Agent Steps:</strong> <em>Parses notes, lists decisions, creates linked actions. Uses note parsing and cross‑linking.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-816a-9071-d583f14a75c7" class="">68. Email Draft Generator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8141-8d3a-c6c0d0f764d1" class=""><strong>✏️ Prompt:</strong> &quot;Draft a follow‑up to the product team referencing decisions and next steps.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e8-ad04-dd5e6db22e80" class=""><strong>🪄Agent Steps:</strong> <em>Synthesizes notes, drafts concise email, highlights owners and deadlines. Uses context synthesis.<br/></em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81e1-a52a-c0294ee1bc87" class="">69. Weekly Review Template</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8185-b568-c658dd1b79ac" class=""><strong>✏️ Prompt:</strong> &quot;Create a weekly review pulling completed tasks, upcoming deadlines, and highlights.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81bb-a261-c913e397d27c" class=""><strong>🪄Agent Steps:</strong> <em>Aggregates data, drafts recap and next‑week priorities. Uses aggregation and templating.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8123-8949-ea64413de034" class="">70. Goal Tracking System</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8158-9093-f140e2ee99d7" class=""><strong>✏️ Prompt:</strong> &quot;Build a goal tracker with OKRs and check‑ins, with dashboards by time horizon.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a9-9dca-eec797aac3b7" class=""><strong>🪄Agent Steps:</strong> <em>Creates DB and views, links KRs to evidence pages, sets check‑in cadence. Uses DB design and links.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-81ea-80a4-c7cc3e35bf3a" class="block-color-purple_background">Healthcare &amp; Wellness</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-813e-9b15-cb72b89e9373" class=""><em>Support health and wellbeing initiatives</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81e7-ad1e-f62deb1a0a9f" class="">71. Wellness Program Design</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-814a-b0ec-dba1e5c076b7" class=""><strong>✏️ Prompt:</strong> &quot;Create a wellness program outline with activities, metrics, and incentives.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81cf-8c58-fff1822b947d" class=""><strong>🪄Agent Steps:</strong> <em>Compiles ideas, defines KPIs, drafts plan and calendar. Uses planning and templates.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8177-b24e-d6e19ce5cf5e" class="">72. Health Resource Library</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81bc-8e44-e24806315103" class=""><strong>✏️ Prompt:</strong> &quot;Organize wellness resources into a searchable library with categories.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e2-b86f-e635a3478c47" class=""><strong>🪄Agent Steps:</strong> <em>Curates links, writes summaries, builds index page. Uses content organization.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81d5-afc8-c1d893d10b05" class="">73. Symptom Tracker</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8184-986f-d076b26a63ee" class=""><strong>✏️ Prompt:</strong> &quot;Create a symptom tracking database with trend views and guidance links.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8132-8c18-e5a42768e95d" class=""><strong>🪄Agent Steps:</strong> <em>Designs schema, adds example entries, configures charts. Uses DB design and views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-813f-ab82-db04677601eb" class="">74. Mental Health Resources</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d1-bd46-e08e26088986" class=""><strong>✏️ Prompt:</strong> &quot;Compile remote‑work mental health resources with vetted sources.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81dd-918d-ca3f7aaa7ceb" class=""><strong>🪄Agent Steps:</strong> <em>Researches sources, groups by topic, adds contact info. Uses research and structuring.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81b4-98ef-c8d9230d9951" class="">75. Ergonomics Checklist</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8136-80cb-ea55da7d0008" class=""><strong>✏️ Prompt:</strong> &quot;Create a home‑office ergonomics checklist with a scoring guide.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8117-9e8e-fcc6f1f1b87c" class=""><strong>🪄Agent Steps:</strong> <em>Drafts checklist, adds scoring rubric, links setup guides. Uses checklist and references.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8156-9266-db6f2bbc1229" class="block-color-purple_background">Venture Capital</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8167-8089-c76307f96beb" class=""><em>Equip investment teams with faster diligence and portfolio insights</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-811a-9059-e12abad6d8e8" class="">76. Deal Sourcing Radar</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8108-bd49-e5b1c7f290dd" class=""><strong>✏️ Prompt:</strong> &quot;Aggregate new companies from curated newsletters and investor Twitter lists, and enrich with Crunchbase-style basics. Tag by thesis fit and stage.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8193-b56a-e79d61d5ddb8" class=""><strong>🪄Agent Steps:</strong> <em>Builds a lightweight pipeline of prospects. Uses web research and tagging.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-812d-9db7-d23a8313e29e" class="">77. Investment Memo Draft</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f1-a21e-f841ff528bdd" class=""><strong>✏️ Prompt:</strong> &quot;Draft a first-pass memo for [Company] using the pitch deck, website, and recent press. Include market sizing options, moat analysis, risks, and open questions.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b9-8220-d53ed860967e" class=""><strong>🪄Agent Steps:</strong> <em>Accelerates partner prep with clear gaps. Uses synthesis and structuring.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ee-b155-de5546879917" class="">78. Diligence Checklist Builder</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8191-91d4-c6ebde22c12b" class=""><strong>✏️ Prompt:</strong> &quot;Create a diligence checklist for a B2B SaaS seed deal with sections for product, GTM, tech, security, and legal. Add owner fields and a timeline view.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8182-8cb0-c33c2558ed6a" class=""><strong>🪄Agent Steps:</strong> <em>Standardizes diligence work. Uses database design and views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8146-906c-d1e9fc31c64b" class="">79. Portfolio Health Dashboard</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a4-943e-faa7cc087b67" class=""><strong>✏️ Prompt:</strong> &quot;Create a dashboard pulling quarterly metrics from portfolio update emails in Gmail and Notion company pages. Flag runway under 12 months and hiring needs. Link source update docs from Google Drive/Box.&quot; Flag runway under 12 months and hiring needs.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f8-b1e9-e2ded2c7e4cc" class=""><strong>🪄Agent Steps:</strong> <em>Surfaces risks and support needs. Uses aggregation and alerts.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-812e-bdd4-ee9839d03dc9" class="">80. LP Update Generator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8143-af26-cf452278a48f" class=""><strong>✏️ Prompt:</strong> &quot;Draft a quarterly LP update summarizing exits, follow-ons, top performers, and support initiatives using portfolio updates from Gmail and metrics files in Google Drive/Box. Include charts and links to underlying portfolio pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8181-ba72-cc1d06987706" class=""><strong>🪄Agent Steps:</strong> <em>Produces clean, transparent reporting. Uses compilation and storytelling.</em></p></div><div style="display:contents" dir="auto"><h1 id="2c602ebf-3217-8115-9b6f-d5ffb0963fb3" class="block-color-purple_background">Innovation &amp; Ideation</h1></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81cd-a817-d289e3a32b16" class=""><em>Foster creativity and innovation</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ff-8b88-fd89ab781429" class="">81. Brainstorming Facilitator</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-810e-927e-caa552576907" class=""><strong>✏️ Prompt:</strong> &quot;Prepare a brainstorming workspace with categories, evaluation criteria, and example prompts drawn from customer and roadmap pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8168-9e50-e551f019001e" class=""><strong>🪄Agent Steps:</strong> <em>Structures creative work. Uses framework and seeding with context.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8125-970f-c4f46e91b7b6" class="">82. Innovation Pipeline</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81fb-a636-f1bca920716d" class=""><strong>✏️ Prompt:</strong> &quot;Create an ideas pipeline database with stages, owners, and impact/effort scoring. Provide views by stage and by quarter.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811d-a792-e2050406215c" class=""><strong>🪄Agent Steps:</strong> <em>Tracks ideas to outcomes. Uses pipeline design and views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81ca-a7bf-daed85a92c8a" class="">83. Trend Analysis Report</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8106-b742-d0f34cd4c3f7" class=""><strong>✏️ Prompt:</strong> &quot;Synthesize emerging trends from web research and internal expert notes. Highlight opportunities aligned to our strategy and cite sources.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b6-92f2-c686d808dc2d" class=""><strong>🪄Agent Steps:</strong> <em>Finds signal and alignment. Uses research synthesis with citations.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81a1-ba82-f7034a7a7fef" class="">84. Hackathon Project Organizer</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d8-8185-c1fd4fa4c961" class=""><strong>✏️ Prompt:</strong> &quot;Organize hackathon projects with team assignments, descriptions, and judging criteria. Add a schedule page and link team channels.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-813b-8618-d5f5d200e9a3" class=""><strong>🪄Agent Steps:</strong> <em>Keeps events on track. Uses event structure and references.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8108-bd86-e87890c29225" class="">85. Patent Research Summary</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8168-9db9-ed9642b2d27a" class=""><strong>✏️ Prompt:</strong> &quot;Research patents in our area and summarize potential conflicts and whitespace, linking to representative filings and our related docs.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8152-bf75-f833fe8b0d8c" class=""><strong>🪄Agent Steps:</strong> <em>Informs IP strategy. Uses patent research and mapping.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8170-bead-eb9ac32c68bf" class="block-color-purple_background">Customer Experience</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81de-a080-c9ba499d714e" class=""><em>Enhance every customer touchpoint</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-811b-92d0-de0645fac6b3" class="">86. Customer Journey Mapping</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-816e-a16c-ff375ad53f2b" class=""><strong>✏️ Prompt:</strong> &quot;Map the customer journey from awareness to advocacy using personas in Notion, support logs from Slack and Zendesk, and onboarding notes in Google Drive/OneDrive. Highlight pain points and upstream fixes.&quot; Highlight pain points and upstream fixes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8120-9376-eaa7666580f4" class=""><strong>🪄Agent Steps:</strong> <em>Visualizes experience with evidence. Uses journey mapping and linkage.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81be-88d4-dad14b479838" class="">87. Support Ticket Analysis</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e5-bb06-e3993890cb4d" class=""><strong>✏️ Prompt:</strong> &quot;Cluster support tickets to identify common issues and generate draft knowledge base articles with steps and screenshots to request.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-817e-a15b-d2dc83cb3735" class=""><strong>🪄Agent Steps:</strong> <em>Closes gaps between support and docs. Uses clustering and drafting.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8190-9cbb-d60fbe046bb1" class="">88. NPS Response Action Plan</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8187-9acf-cb91ad2344db" class=""><strong>✏️ Prompt:</strong> &quot;Review NPS responses and create playbooks for detractors, passives, and promoters. Include outreach templates and link to the originating feedback pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8138-b7cc-f4948565c28c" class=""><strong>🪄Agent Steps:</strong> <em>Turns feedback into action. Uses sentiment grouping and templating.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81e9-89a4-f2519e9d928e" class="">89. Customer Success Playbook</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-818a-a4c9-dee752a04bfc" class=""><strong>✏️ Prompt:</strong> &quot;Create a playbook with lifecycle stages, key activities, health checks, and success metrics. Map each activity to examples in our existing notes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d6-947b-c97a76ea7b9c" class=""><strong>🪄Agent Steps:</strong> <em>Standardizes delivery with proof points. Uses playbook design and references.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8192-8fb2-dfd57329751c" class="">90. Feedback Loop System</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81c4-9073-f4b2d07ef2ef" class=""><strong>✏️ Prompt:</strong> &quot;Design a feedback loop that routes insights to product and support pages, with tags, owners, and a review cadence. Provide a starter dashboard.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ec-aa0e-f2f70c2c8a63" class=""><strong>🪄Agent Steps:</strong> <em>Connects signal to action. Uses system design and dashboards.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81c1-8f10-ca19aaa3e08a" class="block-color-purple_background">Event Planning</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f3-9acb-f453b29e8608" class=""><em>Execute flawless events and experiences</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-814a-8bb8-f0eba6ca06ad" class="">91. Event Planning Timeline</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e0-9e0a-db6f7b00f63b" class=""><strong>✏️ Prompt:</strong> &quot;Create a timeline for our annual conference with tasks, deadlines, and owners. Add dependencies and a risk section with mitigations.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81b6-aa02-d00f3486fb0b" class=""><strong>🪄Agent Steps:</strong> <em>Orchestrates complex events with foresight. Uses timeline views and risk notes.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81be-8484-c8baee7bf916" class="">92. Vendor Comparison Matrix</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8155-8c44-f1a84710a843" class=""><strong>✏️ Prompt:</strong> &quot;Compare venue options by capacity, cost, location, and amenities in a decision matrix. Weight criteria, score options, and recommend top two with tradeoffs.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f4-a8a5-dd929f17806e" class=""><strong>🪄Agent Steps:</strong> <em>Enables objective selection. Uses matrix and weighted scoring.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8140-ac04-e22e59eaa7c5" class="">93. Guest List Management</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8156-91c6-ec7617b70203" class=""><strong>✏️ Prompt:</strong> &quot;Create a guest list database with RSVPs, dietary needs, and seating. Provide views by table and by status.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8132-be81-ea371859773e" class=""><strong>🪄Agent Steps:</strong> <em>Manages attendees cleanly. Uses database plus views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8113-a9a6-e44a919e9cfd" class="">94. Event Budget Tracker</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81af-8763-e7f0ae561fa2" class=""><strong>✏️ Prompt:</strong> &quot;Build a budget tracker with categories, actuals vs planned, and running totals. Surface variance alerts and link receipts.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8114-9d6a-fd87caaabec9" class=""><strong>🪄Agent Steps:</strong> <em>Controls spend with transparency. Uses budget tables and variance logic.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-817c-b7dc-e6fb17396fe8" class="">95. Post-Event Report</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81a1-b20f-de0e03f36a01" class=""><strong>✏️ Prompt:</strong> &quot;Generate a post-event report with attendance, engagement metrics, feedback themes, and lessons learned, linking to source pages.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f1-893e-eba57ee77430" class=""><strong>🪄Agent Steps:</strong> <em>Captures outcomes and improvements. Uses data compilation and synthesis.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81bd-8325-eb0e21327314" class="block-color-purple_background">Security &amp; Compliance</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ca-939f-e336083e314e" class=""><em>Ensure security and maintain compliance</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81e0-9013-fab4fc9b6257" class="">96. Security Audit Checklist</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81d0-9027-fb1442869fd5" class=""><strong>✏️ Prompt:</strong> &quot;Create an audit checklist based on ISO 27001 with our current control status and evidence links. Highlight gaps and propose owners and timelines.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e7-bda0-f88272cdcbe0" class=""><strong>🪄Agent Steps:</strong> <em>Assesses posture with clear follow-ups. Uses framework mapping and planning.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8118-8c7e-d97af0f4d1f6" class="">97. Access Control Matrix</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81e1-b36f-e75973da55f1" class=""><strong>✏️ Prompt:</strong> &quot;Build an access matrix showing roles, permissions, and data access. Cross-link to team pages and sensitive system docs.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81f1-997a-efaf6ffa5921" class=""><strong>🪄Agent Steps:</strong> <em>Clarifies who can do what. Uses matrix and cross-references.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81a9-9e62-d04218a9f170" class="">98. Compliance Calendar</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8197-b5ec-ff287f904a92" class=""><strong>✏️ Prompt:</strong> &quot;Create a compliance calendar with regulatory deadlines, audit dates, and renewals. Add views by regulation and by quarter.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-812a-b4b0-c642775c5350" class=""><strong>🪄Agent Steps:</strong> <em>Keeps obligations visible. Uses calendar and filtered views.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-8136-88d3-e17ac4bd5a97" class="">99. Data Privacy Assessment</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8109-bd30-e984c9925fe3" class=""><strong>✏️ Prompt:</strong> &quot;Assess data handling against privacy regulations. Produce a gap list with risk rating, suggested remediations, and links to current processes.”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-811a-bfec-d0f2b08f53b0" class=""><strong>🪄Agent Steps:</strong> <em>Drives remediation with prioritization. Uses assessment structure and references.</em></p></div><div style="display:contents" dir="auto"><h2 id="2c602ebf-3217-81d6-a72d-d7f60e8ab146" class="">100. Incident Log Database</h2></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ab-869c-e508e82fea18" class=""><strong>✏️ Prompt:</strong> &quot;Create a security incident log with classification, response actions, and lessons learned. Include dashboards for &#x27;Open&#x27; and &#x27;Needs review’. ”</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8151-9133-d6f8b3a9ab94" class=""><strong>🪄Agent Steps:</strong> <em>Tracks incidents from detection to learning. Uses incident database and dashboards.</em></p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-814a-9079-cd11f1b409e4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-816d-99d8-d326fcaa4185" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8199-9104-d40e96901905" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2c602ebf-3217-81f0-999b-c1e86304526b"/></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ee-ac0c-d5b9b09b63a3" class=""><strong>Notion is a Connected Workspace where modern teams create and share docs, take notes, manage projects, and organize knowledge — all in one place.</strong></p></div><div style="display:contents" dir="auto"><div id="2c602ebf-3217-8187-a17a-ef948b40999b" class="column-list"><div style="display:contents" dir="auto"><div id="2c602ebf-3217-81df-bd4e-cc3c8fd35446" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2c602ebf-3217-819c-9b1b-db7a39c435e2"><div style="font-size:1.5em"><span class="icon">✨</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2c602ebf-3217-81ef-9a87-c314f0c1ffb9" class=""><strong>Contact sales<br/></strong>Learn how Notion can work for your team with a <a href="https://www.notion.com/contact-sales">personalized consultation</a>.</p></div></div></figure></div></div></div><div style="display:contents" dir="auto"><div id="2c602ebf-3217-81da-a57b-f0181cd5bd8a" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2c602ebf-3217-811e-9486-f5266d96ac73"><div style="font-size:1.5em"><span class="icon">▶️</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8192-98e4-dcd377622d88" class=""><strong>Take a product tour<br/></strong>See Notion Enterprise Search in-action in this 2 min <a href="https://demo.hellonotion.com/psl/cf10sqs">interactive demo</a>.</p></div></div></figure></div></div></div></div></div><div style="display:contents" dir="auto"><p id="2c602ebf-3217-8041-85d7-f08776f05054" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
